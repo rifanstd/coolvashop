@@ -1,3 +1,4 @@
+import 'package:coolvashop/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +25,7 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else {
-      // Go to login screen
+      Get.toNamed(AppRoutes.LOGIN);
     }
   }
 

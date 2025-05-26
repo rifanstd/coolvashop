@@ -15,8 +15,6 @@ class OnboardingScreen extends GetView<OnboardingController> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(OnboardingController());
-
     return Scaffold(
       body: Stack(
         children: [
@@ -50,20 +48,35 @@ class OnboardingScreen extends GetView<OnboardingController> {
           const _Indicator(),
 
           // Next Button
-          Positioned(
-            bottom: TDeviceUtils.getBottomNavigationBarHeight(),
-            right: TSizes.defaultSpace,
-            child: ElevatedButton(
-              onPressed: controller.nextPage,
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(side: BorderSide.none),
-                backgroundColor: THelperFunctions.isDarkMode(context) ? TColors.primary : Colors.black,
-                side: BorderSide.none,
-              ),
-              child: const Icon(Iconsax.arrow_right_3),
-            ),
-          ),
+          const _NextButton(),
         ],
+      ),
+    );
+  }
+}
+
+class _NextButton extends StatelessWidget {
+  const _NextButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.find<OnboardingController>();
+    return Positioned(
+      bottom: TDeviceUtils.getBottomNavigationBarHeight(),
+      right: TSizes.defaultSpace,
+      child: ElevatedButton(
+        onPressed: controller.nextPage,
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(side: BorderSide.none),
+          backgroundColor: THelperFunctions.isDarkMode(context)
+              ? TColors.primary
+              : Colors.black,
+          side: BorderSide.none,
+        ),
+        child: const Icon(
+          Iconsax.arrow_right_3,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -74,7 +87,7 @@ class _Indicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = OnboardingController.instance;
+    final controller = Get.find<OnboardingController>();
 
     return Positioned(
       bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
@@ -85,7 +98,9 @@ class _Indicator extends StatelessWidget {
         count: 3,
         effect: ExpandingDotsEffect(
           dotHeight: 6,
-          activeDotColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
+          activeDotColor: THelperFunctions.isDarkMode(context)
+              ? TColors.light
+              : TColors.dark,
         ),
       ),
     );
@@ -97,7 +112,7 @@ class _SkipButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = OnboardingController.instance;
+    final controller = Get.find<OnboardingController>();
 
     return Positioned(
       top: TDeviceUtils.getAppBarHeight(),

@@ -1,4 +1,5 @@
-import 'package:coolvashop/features/authentication/screens/onboarding_screen.dart';
+import 'package:coolvashop/routes/app_pages.dart';
+import 'package:coolvashop/routes/app_routes.dart';
 import 'package:coolvashop/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,8 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const OnboardingScreen(),
+      initialRoute: AppRoutes.INITIAL,
+      getPages: AppPages.pages,
     );
   }
 }
