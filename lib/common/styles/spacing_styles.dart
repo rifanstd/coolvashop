@@ -10,12 +10,4 @@ class TSpacingStyles {
     right: TSizes.defaultSpace,
     bottom: TSizes.defaultSpace,
   );
-
-  static const SizedBox smSpace = SizedBox(height: TSizes.sm);
-
-  static const SizedBox spacingBtwItemsVertical =
-      SizedBox(height: TSizes.spaceBtwItems);
-
-  static const SizedBox spacingBtwItemsHorizontal =
-      SizedBox(width: TSizes.spaceBtwItems);
 }
